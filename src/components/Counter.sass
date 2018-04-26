@@ -1,0 +1,59 @@
+@import "~styles/variables"  // '~' informs sass-loader that is not relative path
+*
+  box-sizing: border-box
+body
+  height: 100vh
+  width: 100vw
+  display: flex
+  align-items: center
+  justify-content: center
+  overflow: hidden
+  background-image: linear-gradient(#43A2BF 0%, #fff 100%)
+.counter, .counter-wrapper
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  border-radius: 50%
+.counter
+  width: 280px
+  min-height: 280px
+  margin: 0 auto
+  background-color: #43A2BF
+  padding: 40px
+  transform: scale(0.98)
+  box-shadow: none
+  transition: all .2s cubic-bezier(0.72, 2.4, 0.47, 1.3)
+  &:hover
+    cursor: pointer
+  &:active
+    transform: scale(0.98)
+    box-shadow: none
+  &.unpressed
+    transform: scale(1)
+    box-shadow: 0 0 7px 3px rgba(0,0,0,0.3)
+
+.counter-wrapper
+  background-color: #43A2BF
+  padding: 10px
+  width: 300px
+  height: 300px
+  box-shadow: none
+  background-image: 
+.timer,
+.timer-to
+  font-size: 34px
+  height: 80px
+  width: 150px
+  border-radius: 5px
+  background-color: #fff
+  display: flex
+  justify-content: center
+  align-items: center
+.timer
+  margin: 0
+.timer-to
+  font-size: 32px
+  height: 60px
+  margin-top: 10px
+  background-color: rgba(255,255,255,0.4)
