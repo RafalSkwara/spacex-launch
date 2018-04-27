@@ -41,11 +41,10 @@ class Counter extends React.Component {// eslint-disable-line react/prefer-state
             this.onSuccess();
         }
         this.updateSeconds();
-        console.log(this.state.to, this.state.from)
     }
 
     updateSeconds() {
-        let time = dateF.format((this.state.to - this.state.from), 'D [days] H [hrs] M [mins]')
+        let time = dateF.format(this.state.from*1000, 'D [days] H [hrs] M [mins]')
         this.setState({
             left: time
         });
@@ -53,8 +52,12 @@ class Counter extends React.Component {// eslint-disable-line react/prefer-state
     
     render() {
         return (
+            <div>
                 <p className = "timer" > 
                     {this.state.left} to start</p>
+                    From: {this.state.from}
+                <br /> To: {this.state.to}
+            </div>
         );
     }
 }
