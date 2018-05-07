@@ -10,14 +10,14 @@ import dateF from 'date-fns';
 import './styles/theme.sass';
 
 class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <main>
-                <LaunchDetails />
+                <LaunchDetails
+                    launch={launch}
+                    launchSite={launchSite}
+                    rocket={rocket}
+                />
             </main>
         );
     }

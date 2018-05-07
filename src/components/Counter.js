@@ -33,28 +33,36 @@ class Counter extends React.Component {// eslint-disable-line react/prefer-state
         return number < 10 ? `0${number}` : number;
     }
 
+    convertSeconds(s) {
+        var d, h, m;
+        m = Math.floor(s / 60);
+        s = s % 60;
+        h = Math.floor(m / 60);
+        m = m % 60;
+        d = Math.floor(h / 24);
+        h = h % 24;
+        return { d: d, h: h, m: m, s: s };
+    };
+
     tick() {
-        this.setState({
-            from: this.state.from - 1,
-        });
-        if (this.state.from === this.state.to) {
+        if(this.state.from > this.state.to) {
+            let time = () => this.convertSeconds(this.state.from-this.state.to);
+            this.setState({
+                from: this.state.from - 1,
+                left: `${time().d} DAYS ${time().h} HRS ${time().m} MINS`
+            });
+
+        } else if (this.state.from === this.state.to) {
             this.onSuccess();
         }
-        this.updateSeconds();
     }
 
-    updateSeconds() {
-        let time = dateF.format(this.state.from*1000, 'D [days] H [hrs] M [mins]')
-        this.setState({
-            left: time
-        });
-    }
     
     render() {
         return (
             <div>
                 <p className = "timer" > 
-                    {this.state.left} to start</p>
+                    {this.state.left} TO START</p>
                     From: {this.state.from}
                 <br /> To: {this.state.to}
             </div>

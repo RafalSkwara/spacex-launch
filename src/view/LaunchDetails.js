@@ -14,7 +14,10 @@ export default class LaunchDetails extends React.Component { // eslint-disable-l
         return (
             <div className="details-wrapper">
                 <DetailsHeader />
-                <DetailsBody />
+                <DetailsBody 
+                    launch={this.props.launch}
+                    launchSite={this.props.launchSite}
+                    rocket={this.props.rocket.name}/>
             </div>
         );
     }
