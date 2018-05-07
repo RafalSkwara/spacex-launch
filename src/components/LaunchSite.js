@@ -5,6 +5,27 @@ export default class LaunchSite extends React.Component {
     // eslint-disable-line react/prefer-stateless-function
 
     render() {
-        return <p> LaunchSite </p>
+        return <div className={"launchsite-block"}>
+                <h3> Launch Site </h3>
+                <div className={"launchsite__column"}>
+                    <div className={"subcolumn--left"}>Name:</div>
+                    <div className={"subcolumn--right"}>
+                        {this.props.launchSite["full_name"]}
+                    </div>
+                </div>
+                <div className={"launchsite__column"}>
+                    <div className={"subcolumn--left"}>Location:</div>
+                    <div className={"subcolumn--right"}>
+                        {this.props.launchSite.location.name}, <br />
+                        {this.props.launchSite.location.region}
+                    </div>
+                </div>
+                <p
+                    className={
+                        "launchsite__additional-info launchsite-block__par"
+                    }
+                > {this.props.launchSite.details}
+                </p>
+            </div>
     }
 }
