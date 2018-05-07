@@ -7,7 +7,7 @@ import launchSite from './assets/launch_site.json';
 import rocket from './assets/rocket.json';
 import dateF from 'date-fns';
 
-import './styles/theme.sass';
+import "./styles/theme.sass"
 
 class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
     render() {

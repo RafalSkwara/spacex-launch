@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import dateF from 'date-fns';
-import './Counter.sass';
+import '../styles/Counter.sass';
 
 class Counter extends React.Component {// eslint-disable-line react/prefer-stateless-function
     constructor(props) {
@@ -63,8 +63,6 @@ class Counter extends React.Component {// eslint-disable-line react/prefer-state
             <div>
                 <p className = "timer" > 
                     {this.state.left} TO START</p>
-                    From: {this.state.from}
-                <br /> To: {this.state.to}
             </div>
         );
     }
