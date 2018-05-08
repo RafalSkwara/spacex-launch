@@ -2,20 +2,22 @@
     
 .details-header
     background-color: #111
-    height: 10vh
-    max-height: 66px
+    height: 12vh
+    max-height: 70px
     width: 100%
     display: grid
+    padding-left: 10px
     grid-template-columns: 25% 50% 25%
     .details-header__column
         display: flex
         align-items: center
         width: 100%
-        max-height: 66px
+        max-height: 70px
         flex-grow: 0
         &.details-header__column--50
             justify-content: center
             img
+                margin-left: 40px
                 height: 36px
                 align-self: center
         .go-back-btn
@@ -48,4 +50,4 @@
                 div
                     height: 2px
                     background-color: $desert
-                    width: 40px
+                    width: 30px
