@@ -5,36 +5,53 @@ import Counter from './Counter';
 import Details from "./Details";
 import Rocket from "./Rocket";
 import LaunchSite from "./LaunchSite";
+import { fetchLaunchData } from "../actions/actions"
+import { connect } from "react-redux"
 
-
-export default class DetailsBody extends React.Component { // eslint-disable-line react/prefer-stateless-function
+@connect(store => {
+    return {
+        data: store,
+    }
+})
+export default class DetailsBody extends React.Component {
+    // eslint-disable-line react/prefer-stateless-function
     constructor(props) {
-        super(props);
+        super(props)
+    }
+    componentWillMount() {
+        this.props.dispatch(fetchLaunchData())
     }
 
     render() {
-        let date = this.props.launch["launch_date_unix"];
-        const sec = Math.floor(Date.now()/1000);
-        return <section className={"details-body"}>
-                <div className={"details-body__column details-body__column--left"}>
-                    <p
-                        className={
-                            "details-body__par details-body__par--grey"
-                        }
-                    >
+        let date = this.props.data.launch['launch_date_unix']
+        let emergencyImg = require("../assets/img/space_x_logo_bw_centered.svg")
+        const sec = Math.floor(Date.now() / 1000)
+        return (
+            <section className={"details-body"}>
+                <div
+                    className={
+                        "details-body__column details-body__column--left"
+                    }
+                >
+                    <p className={"details-body__par details-body__par--grey"}>
                         {dateF.format(date * 1000, "D MMMM YYYY")}
                     </p>
                     <h2 className={"header_big"}>
-                        {this.props.rocket.name} launch
+                        {this.props.data.rocket['rocket_name']} launch
                     </h2>
                     <Counter countFrom={date} countTo={sec} />
-                    <img src={this.props.launch.links.mission_patch} />
+                    {/* {this.ShouldPatchRender()} */}
                 </div>
-                <div className={"details-body__column details-body__column--right"}>
-                    <Details launch={this.props.launch}/>
-                    <Rocket rocket={this.props.rocket}/>
-                    <LaunchSite launchSite={this.props.launchSite} />
+                <div
+                    className={
+                        "details-body__column details-body__column--right"
+                    }
+                >
+                    <Details launch={this.props.data.launch} />
+                    <Rocket rocket={this.props.data.rocket} />
+                    <LaunchSite launchSite={this.props.data.launchSite} />
                 </div>
             </section>
+        )
     }
 }
