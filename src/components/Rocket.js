@@ -1,9 +1,11 @@
 import React from "react"
 import "../styles/Rocket.sass"
 
-export default class Rocket extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export default class Rocket extends React.Component {
+    // eslint-disable-line react/prefer-stateless-function
     render() {
-        return <div className={"rocket-block"}>
+        return (
+            <div className={"rocket-block"}>
                 <h3> Rocket </h3>
                 <div className={"rocket__column"}>
                     <div className={"rocket__row"}>
@@ -13,13 +15,12 @@ export default class Rocket extends React.Component { // eslint-disable-line rea
                         </div>
                     </div>
                     <div className={"rocket__row"}>
-                        <div className={"subcolumn--left"}>
-                            Company:
-                        </div>
+                        <div className={"subcolumn--left"}>Company:</div>
 
                         <div className={"subcolumn--right"}>
-                            {/* {this.props.rocket.company ||
-                                this.props.rocket['second_stage'].payloads[0].customers[0]} */}
+                            { this.props.rocket['second_stage'].payloads?
+                                this.props.rocket['second_stage'].payloads[0].customers[0]
+                            : null}
                         </div>
                     </div>
                     <div className={"rocket__row"}>
@@ -39,29 +40,22 @@ export default class Rocket extends React.Component { // eslint-disable-line rea
                 </div>
                 <div className={"rocket__column"}>
                     <div className={"rocket__row"}>
-                        <div className={"subcolumn--left"}>
-                            Rocket type:
-                        </div>
+                        <div className={"subcolumn--left"}>Rocket type:</div>
                         <div className={"subcolumn--right"}>
                             {this.props.rocket["rocket_type"]}
                         </div>
                     </div>
                     <div className={"rocket__row"}>
-                        <div className={"subcolumn--left"}>
-                            Payload Type:
-                        </div>
+                        <div className={"subcolumn--left"}>Payload Type:</div>
                         <div className={"subcolumn--right"}>
                             {/* {this.props.rocket.second_stage.payloads[0]['payload_type']} */}
                         </div>
                     </div>
                 </div>
-                <p
-                    className={
-                        "rocket__additional-info rocket-block__par"
-                    }
-                >
+                <p className={"rocket__additional-info rocket-block__par"}>
                     {/* {this.props.rocket.description} */}
                 </p>
             </div>
+        )
     }
 }

@@ -14,7 +14,7 @@ class Counter extends React.Component {// eslint-disable-line react/prefer-state
         this.timer = null;
     }
 
-    componentWillReceiveProps() {
+    componentDidMount() {
         if (this.state.isTicking) {
             this.timer = setInterval(() => {
                 this.tick();

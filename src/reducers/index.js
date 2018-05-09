@@ -1,7 +1,17 @@
 export default function reducer(state = {
     launch: 'date',
     launchSite: 'site',
-    rocket: 'rocket',
+    rocket: {
+        'second_stage': {
+            0: [
+                'payloads':
+                    {   
+                        0: [1,2,],
+                        1: [1,2,]
+                    }
+                ]
+            }
+    },
     error: null,
 }, action) {
 
@@ -12,9 +22,9 @@ export default function reducer(state = {
         case "DATA_RECEIVED": {
             return {  
                 fetching: false,
-                launch: action.payload[0],
-                launchSite: action.payload[0]['launch_site'],
-                rocket: action.payload[0].rocket,
+                launch: action.payload[1],
+                launchSite: action.payload[1]['launch_site'],
+                rocket: action.payload[1].rocket,
             }
         }
         case "DATA_REJECTED": {
@@ -23,7 +33,9 @@ export default function reducer(state = {
                 error: action.payload.err
             }
         }
-    }
+        default: {
+            return state;
+        }
 
-    return state
+    }
 }
