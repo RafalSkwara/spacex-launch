@@ -1,0 +1,30 @@
+@import "../styles/variables"
+
+footer
+    width: 100%
+    height: 80px
+    background-color: $dark-grey
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: 0 5%
+    letter-spacing: 1px
+    .footer__links
+        width: auto
+        display: flex
+        justify-content: space-around
+        a.footer__link
+            text-decoration: none
+            text-transform: uppercase
+            color: $cool-grey
+            font-size: 14px
+            margin-right: 20px
+            &:hover
+                text-decoration: underline
+        a.footer__link--dark,
+        span
+            color: $brownish-grey
+    p
+        color: $brownish-grey
+        font-size: 14px
+        text-transform: uppercase

@@ -1,0 +1,36 @@
+@import "~styles/variables"
+
+.rocket-block
+    display: flex
+    width: 100%
+    flex-wrap: wrap
+    h3, .rocket__additional-info
+        width: 100%
+    .rocket-block__par
+        font-size: 14px
+        letter-spacing: 1.5px
+        line-height: 1.6em
+        font-weight: 500
+        padding: 10px 40px 80px 0
+    .rocket__column
+        text-transform: uppercase
+        font-size: 14px
+        width: 50%
+        border-left: 2px dashed rgba(0,0,0,0.2)
+        display: flex
+        flex-direction: column
+        .rocket__row 
+            display: flex
+            align-items: center
+            height: 30px
+            padding-left: 20px
+            width: 100%
+        .subcolumn--left
+            color: $cool-grey
+            text-align: left
+            padding: 0 8px 0 0
+        .subcolumn--right
+            padding-right: 20px
+@media screen and ( max-width: 760px)
+    .rocket-block
+        flex-direction: column
