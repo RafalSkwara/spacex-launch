@@ -1,5 +1,6 @@
 import React from "react"
 import HeroSection from "../components/list/HeroSection"
+import ListSection from "../components/list/ListSection"
 import Footer from "../components/Footer"
 import "../styles/LaunchesList.sass"
 
@@ -13,6 +14,7 @@ export default class LaunchesList extends React.Component {
         return (
             <div className="launches-wrapper">
                 <HeroSection />
+                <ListSection launches={this.props.launches}/>
                 <Footer />
             </div>
         )
