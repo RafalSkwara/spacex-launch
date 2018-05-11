@@ -1,0 +1,42 @@
+@import "../styles/variables"
+
+.hero
+    height: 80vh
+    width: 100%
+    display: flex
+    flex-direction: column
+    background:
+        color: $almost-black
+    .hero__flex-row
+        display: flex
+        width: 100%
+        &--top
+            height: 75%
+            background:
+                color: $almost-black
+                image: url('../assets/img/moon.png')
+                size: 960px
+                repeat: no-repeat
+                position: center 80%
+            flex-direction: column
+            align-items: center
+            justify-content: flex-end
+        &--bottom
+            height: 25%
+            align-items: center
+            justify-content: center
+    .hero__par
+        color: $cool-grey
+        font-size: 24px
+        text-transform: uppercase
+        letter-spacing: 18px
+        font-weight: 300
+        width: auto
+        text-align: center
+        margin: 20px 0 0 0
+    .hero__logo
+        transform: translateX(8%)
+    button
+        margin-right: 20px
+    button:last-of-type
+        margin: 0

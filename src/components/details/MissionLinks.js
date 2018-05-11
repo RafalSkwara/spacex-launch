@@ -1,5 +1,5 @@
 import React from "react"
-import "../styles/MissionLinks.sass"
+import "../../styles/MissionLinks.sass"
 
 export default class MissionLinks extends React.Component {
     // eslint-disable-line react/prefer-stateless-function

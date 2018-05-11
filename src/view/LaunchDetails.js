@@ -1,7 +1,7 @@
 import React from 'react';
-import DetailsHeader from '../components/DetailsHeader';
-import DetailsBody from '../components/DetailsBody';
-import MissionLinks from "../components/MissionLinks";
+import DetailsHeader from '../components/details/DetailsHeader';
+import DetailsBody from "../components/details/DetailsBody"
+import MissionLinks from "../components/details/MissionLinks"
 import Footer from "../components/Footer";
 
 
@@ -13,16 +13,11 @@ export default class LaunchDetails extends React.Component { // eslint-disable-l
     }
 
     render() {
-        return (
-            <div className="details-wrapper">
-                <DetailsHeader />
-                <DetailsBody 
-                    launch={this.props.launch}
-                    launchSite={this.props.launchSite}
-                    rocket={this.props.rocket}/>
+        return <div className="details-wrapper">
+                <DetailsHeader onBackClick={this.props.onBackClick} />
+                <DetailsBody launch={this.props.launch} launchSite={this.props.launchSite} rocket={this.props.rocket} />
                 <MissionLinks />
                 <Footer />
             </div>
-        );
     }
 }

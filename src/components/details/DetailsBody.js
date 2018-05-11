@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/DetailsBody.sass';
+import '../../styles/DetailsBody.sass';
 import dateF from 'date-fns';
 import Counter from './Counter';
 import Details from "./Details";

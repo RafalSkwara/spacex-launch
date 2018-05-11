@@ -1,5 +1,5 @@
 import React from "react"
-import "../styles/Rocket.sass"
+import "../../styles/Rocket.sass"
 
 export default class Rocket extends React.Component { // eslint-disable-line react/prefer-stateless-function
     render() {

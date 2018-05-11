@@ -1,5 +1,5 @@
 import React from "react"
-import "../styles/Details.sass"
+import "../../styles/Details.sass"
 
 export default class Details extends React.Component {
     // eslint-disable-line react/prefer-stateless-function

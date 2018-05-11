@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import dateF from 'date-fns';
-import '../styles/Counter.sass';
+import '../../styles/Counter.sass';
 
 class Counter extends React.Component {// eslint-disable-line react/prefer-stateless-function
     constructor(props) {
