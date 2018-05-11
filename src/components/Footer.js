@@ -9,7 +9,7 @@ export default class Footer extends React.Component {
             <footer className={"footer"}>
                 <div className={"footer__links"}>
                     <a className={"footer__link footer__link--dark"} href={"#"}>Follow SpaceX</a>
-                    <span>|</span>
+                    <span>&nbsp;|&nbsp;</span>
                     <a className={"footer__link"} href={"#"}>Twitter</a>
                     <a className={"footer__link"} href={"#"}>YouTube</a>
                     <a className={"footer__link"} href={"#"}>Flickr</a>

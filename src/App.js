@@ -54,6 +54,7 @@ class App extends React.Component {
 
     handleLaunchClick() {
         this.setState({ viewName: "details" })
+        window.scrollTo(0, 0);
     }
 
     handleBackClick() {
