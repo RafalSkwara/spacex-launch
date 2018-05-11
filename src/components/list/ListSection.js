@@ -1,6 +1,6 @@
 import React from "react"
 import dateF from 'date-fns'
-
+import ListItem from './ListItem'
 import "../../styles/ListSection.sass"
 
 
@@ -11,25 +11,11 @@ export default class ListSection extends React.Component {
     }
 
     getItems() {
-        return this.props.launches.map(flight => {
-            return <div className={"item"} number={"flight.flight_number"}>
-                    <p className={"item__date"}>
-                        {dateF.format(
-                            flight.launch_date_unix * 1000,
-                            "DD MMMM YYYY"
-                        )}
-                    </p>
-                    <div className={"item__arrow"} >
-                        <div className={"item__arrow__line"} />
-                        <div className={"item__arrow__pointer"} />
-                    </div>
-                    <p className={"item__mini-details"}>
-                        <span>rocket: </span>
-                        {flight.rocket.rocket_name}
-                        <span> | Launch Site: </span>
-                        {flight.launch_site.site_name_long}
-                    </p>
-                </div>
+        return this.props.launches.map((flight) => {
+            return <div className="item-wrapper">
+                    <ListItem flight={flight} onLaunchClick={this.props.onLaunchClick} />
+                    <div className={"separator"} />
+                </div>             
          })
     }
 

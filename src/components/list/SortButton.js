@@ -9,7 +9,7 @@ export default class SortButton extends React.Component {
 
     render() {
         return(
-            <button class="sort-button">{this.props.sortBy}</button>
+            <button className="sort-button">{this.props.sortBy}</button>
         )
     }
 }

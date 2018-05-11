@@ -1,62 +1,10 @@
 @import "../styles/variables"
 
-$item-height: 120px
-
 .list
     width: 100%
     background-color: $almost-black
     color: $white
     display: flex
     flex-wrap: wrap
-.item
-    padding: 10px
-    border: 1px solid $almost-black
-    width: 50%
-    height: $item-height
-    text-transform: uppercase
-    display: flex
-    flex-direction: column
-    justify-content: center
-    font:
-        size: 14px
-    &__date
-        letter-spacing: 9px
-    &__mini-details
-        letter-spacing: 1px
-        span
-            color: $cool-grey
-    &__arrow
-        height: 10px
-        display: flex
-        align-items: center
-        width: 100%
-        flex-grow: 1
-    &__arrow__line
-        background-color: $desert
-        height: 2px
-        width: 100%
-    &__arrow__pointer
-        transform-origin: center center
-        width: 10px
-        height: 10px
-        background:
-            image: url(../assets/img/arrow_pointer.svg)
-            position: left center
-            size: 10px
-            repeat: no-repeat
-    &:hover
-        cursor: pointer
-        background-color: $brownish-grey
-        border: 1px solid $white
-.item:nth-child(odd)
-    margin-bottom: $item-height
-    .item__arrow__pointer
-        transform: rotate(180deg)
-
-.item:nth-child(even)
-    margin-top: $item-height
-    .item__arrow
-        flex-direction: row-reverse
-    p.item__date,
-    p.item__mini-details
-        text-align: right
+    div
+        width: 50%

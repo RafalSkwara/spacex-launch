@@ -14,7 +14,7 @@ export default class LaunchesList extends React.Component {
         return (
             <div className="launches-wrapper">
                 <HeroSection />
-                <ListSection launches={this.props.launches}/>
+                <ListSection launches={this.props.launches} onLaunchClick={this.props.onLaunchClick}/>
                 <Footer />
             </div>
         )

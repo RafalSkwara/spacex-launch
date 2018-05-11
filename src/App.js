@@ -19,6 +19,7 @@ class App extends React.Component {
         super(props)
         this.state = {
             viewName: "list",
+
         }
         this.handleLaunchClick = this.handleLaunchClick.bind(this)
         this.handleBackClick = this.handleBackClick.bind(this)
