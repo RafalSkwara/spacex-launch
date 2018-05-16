@@ -1,7 +1,7 @@
 import React from "react"
 import HeroSection from "../components/list/HeroSection"
-import ListSection from "../components/list/ListSection"
 import FilterButtons from "../components/list/FilterButtons"
+import ListItem from "../components/list/ListItem"
 import Footer from "../components/Footer"
 import "../styles/LaunchesList.sass"
 
@@ -20,9 +20,9 @@ export default class LaunchesList extends React.Component {
 // 	this.filteredLaunches
 //   }
 
-  componentDidUpdate() {
-	  console.log(this.state.rocketNameFilter)
-  }
+//   componentDidUpdate() {
+// 	  console.log(this.state.rocketNameFilter)
+//   }
 
   get availableRocketNames() {
 	const {
@@ -50,26 +50,24 @@ export default class LaunchesList extends React.Component {
   }
 
   handleFilterChange(value) {
-	this.setState({ rocketNameFilter: value.target.value, launches: filtered, })
-	const filtered = this.filteredLaunches
-	this.setState({
-        launches: filtered,
-    })
+	console.log(value.target.value)
+	this.setState({ rocketNameFilter: value.target.value, })
 
   }
   render() {
-	return ( <div className = "launches-wrapper" >
-		<HeroSection />
-		<FilterButtons 
-			options = { this.availableRocketNames }
-			onChange = {this.handleFilterChange}
-		/> 
-		<ListSection launches = 
-			{this.state.launches}
-			onLaunchClick = {this.props.onLaunchClick}
-		/> 
-		<Footer />
-	  </div>
-	)
+	const logo = require("../assets/img/space_x_logo_bw_centered.svg")
+	return <div className="launches-wrapper">
+            <HeroSection />
+            <FilterButtons options={this.availableRocketNames} onChange={this.handleFilterChange} />
+            <section className={"list"}>
+                {this.filteredLaunches.map(flight => {
+                    return <div className="item-wrapper" id={flight.flight_number}>
+                            <ListItem flight={flight} onLaunchClick={this.props.onLaunchClick} />
+                            <div className={"separator"} />
+                        </div>
+                })}
+            </section>
+            <Footer />
+        </div>
   }
 }
