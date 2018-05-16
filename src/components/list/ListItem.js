@@ -10,7 +10,7 @@ export default class ListItem extends React.Component {
     }
 
     render() {
-        return <div className={"item"} number={"flight.flight_number"} onClick={this.props.onLaunchClick}>
+        return <div className={"item"} number={this.props.flight.flight_number} onClick={this.props.onLaunchClick}>
                 <p className={"item__date"}>
                     {dateF.format(
                         this.props.flight.launch_date_unix * 1000,
