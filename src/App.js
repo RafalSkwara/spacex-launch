@@ -2,13 +2,13 @@ import { hot } from 'react-hot-loader';
 import * as React from 'react';
 // import axios from 'axios';
 import LaunchDetails from 'view/LaunchDetails';
-import launch from './assets/launch.json';
+// import launch from './assets/launch.json';
 import launchSite from './assets/launch_site.json';
 import rocket from './assets/rocket.json';
 
-import launches from "./assets/launches.json"
-import LaunchesList from "view/LaunchesList"
-
+import launches from "./assets/launches.json";
+import LaunchesList from "view/LaunchesList";
+import axios from 'axios';
 import dateF from 'date-fns';
 
 import "./styles/theme.sass"
@@ -18,12 +18,26 @@ class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            viewName: "list",
+			viewName: "list",
+			data: launches //default state
 
         }
         this.handleLaunchClick = this.handleLaunchClick.bind(this)
         this.handleBackClick = this.handleBackClick.bind(this)
     }
+
+	componentWillMount() {
+		let fetchedData;
+		axios.get('https://api.spacexdata.com/v2/launches')
+			.then((response) => {
+				this.setState({
+					data: response.data
+				})
+				console.log(response.data) 
+			})
+			.catch((error) => console.log(error));
+		
+	}
 
     get activeViewComponent() {
         const { viewName } = this.state
@@ -32,7 +46,7 @@ class App extends React.Component {
             case "list":
                 return (
                     <LaunchesList
-                        launches={launches}
+                        launches={this.state.data}
                         onLaunchClick={this.handleLaunchClick}
                     />
                 )

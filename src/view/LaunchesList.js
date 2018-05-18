@@ -1,9 +1,9 @@
-import React from "react"
-import HeroSection from "../components/list/HeroSection"
-import FilterButtons from "../components/list/FilterButtons"
-import ListItem from "../components/list/ListItem"
-import Footer from "../components/Footer"
-import "../styles/LaunchesList.sass"
+import React from "react";
+import HeroSection from "../components/list/HeroSection";
+import FilterButtons from "../components/list/FilterButtons";
+import ListItem from "../components/list/ListItem";
+import Footer from "../components/Footer";
+import "../styles/LaunchesList.sass";
 
 export default class LaunchesList extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
@@ -13,21 +13,11 @@ export default class LaunchesList extends React.Component {
 	  launches: this.props.launches,
 	  rocketNameFilter: null,
 	}
-	this.handleFilterChange = this.handleFilterChange.bind(this)
+	this.handleFilterChange = this.handleFilterChange.bind(this);
   }
 
-//   componentWillMount() {
-// 	this.filteredLaunches
-//   }
-
-//   componentDidUpdate() {
-// 	  console.log(this.state.rocketNameFilter)
-//   }
-
   get availableRocketNames() {
-	const {
-	  launches
-	} = this.props
+	const { launches } = this.props;
 
 	const rocketNames = []
 	// get all names from launches
@@ -56,18 +46,20 @@ export default class LaunchesList extends React.Component {
   }
   render() {
 	const logo = require("../assets/img/space_x_logo_bw_centered.svg")
-	return <div className="launches-wrapper">
+	return (<div className="launches-wrapper">
             <HeroSection />
             <FilterButtons options={this.availableRocketNames} onChange={this.handleFilterChange} />
             <section className={"list"}>
-                {this.filteredLaunches.map(flight => {
-                    return <div className="item-wrapper" id={flight.flight_number}>
-                            <ListItem flight={flight} onLaunchClick={this.props.onLaunchClick} />
-                            <div className={"separator"} />
-                        </div>
-                })}
+                {
+					this.filteredLaunches.map( flight => {
+                    	return (<div className="item-wrapper" id={flight.flight_number}>
+								<ListItem flight={flight} onLaunchClick={this.props.onLaunchClick} />
+								<div className={"separator"} />
+							</div>);
+					})
+				}
             </section>
-            <Footer />
-        </div>
+            <Footer /> 
+			</div> )
   }
 }
