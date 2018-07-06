@@ -14,7 +14,11 @@ export default class FilterButtons extends React.Component {
                     All Rockets
                 </button>
                 {this.props.options.map(option => {
-                    return <button className={"sort-buttons_button"} value={option} onClick={this.props.onChange}>
+				return <button 
+							className={"sort-buttons_button"} 
+							key={this.props.options.indexOf(option)} 
+							value={option} 
+							onClick={this.props.onChange}>
                             {option}
                         </button>
                 })}

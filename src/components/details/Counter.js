@@ -62,7 +62,7 @@ class Counter extends React.Component {// eslint-disable-line react/prefer-state
         return (
             <div>
                 <p className = "timer" > 
-                    {this.state.left} TO START</p>
+                    {this.state.left && 'TO START'}</p>
             </div>
         );
     }

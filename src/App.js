@@ -1,83 +1,69 @@
-import { hot } from 'react-hot-loader';
-import * as React from 'react';
-// import axios from 'axios';
-import LaunchDetails from 'view/LaunchDetails';
-// import launch from './assets/launch.json';
-import launchSite from './assets/launch_site.json';
-import rocket from './assets/rocket.json';
+import { hot } from "react-hot-loader";
+import * as React from "react";
+import axios from "axios";
+import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchLaunchData, showList, showDetails } from './actions/actions';
 
-import launches from "./assets/launches.json";
+import LaunchDetails from "view/LaunchDetails";
 import LaunchesList from "view/LaunchesList";
-import axios from 'axios';
-import dateF from 'date-fns';
+import launch from "./assets/launch.json";
+import launchSite from "./assets/launch_site.json";
+import rocket from "./assets/rocket.json";
+import dateF from "date-fns";
 
 import "./styles/theme.sass"
 
+const mapStateToProps = state => ({
+	viewName: state.viewName,
+	launches: state.launches,
+	launch: state.launch,
+	fetched: state.fetched
+})
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators({
+		fetchLaunchData: fetchLaunchData,
+		showList: showList,
+		showDetails: showDetails
+	}, dispatch);
+}
+
 class App extends React.Component {
     // eslint-disable-line react/prefer-stateless-function
-    constructor(props) {
-        super(props)
-        this.state = {
-			viewName: "list",
-			data: launches //default state
 
-        }
-        this.handleLaunchClick = this.handleLaunchClick.bind(this)
-        this.handleBackClick = this.handleBackClick.bind(this)
+    componentWillMount() {
+		if(!this.props.fetched){
+			this.props.fetchLaunchData();
+		}
     }
 
-	componentWillMount() {
-		let fetchedData;
-		axios.get('https://api.spacexdata.com/v2/launches')
-			.then((response) => {
-				this.setState({
-					data: response.data
-				})
-				console.log(response.data) 
-			})
-			.catch((error) => console.log(error));
-		
-	}
-
-    get activeViewComponent() {
-        const { viewName } = this.state
-
-        switch (viewName) {
-            case "list":
-                return (
-                    <LaunchesList
-                        launches={this.state.data}
-                        onLaunchClick={this.handleLaunchClick}
-                    />
-                )
-
-            case "details":
-                return (
-                    <LaunchDetails
-                        launch={launch}
-                        launchSite={launchSite}
-                        rocket={rocket}
-                        onBackClick={this.handleBackClick}
-                    />
-                )
-
-            default:
-                return null
-        }
-    }
-
-    handleLaunchClick() {
-        this.setState({ viewName: "details" })
-        window.scrollTo(0, 0);
-    }
-
-    handleBackClick() {
-        this.setState({ viewName: "list" })
-    }
 
     render() {
-        return <main>{this.activeViewComponent}</main>
+		if(this.props.fetched === false) {
+			return (<div style={{backgroundColor: 'red', width: '100vw', height: '100vh', fontSize: 50, color: 'black'}}>Loading</div>);
+		} else {
+			switch(this.props.viewName) {
+			case 'details':
+
+				return (
+					<main>
+						<LaunchDetails />
+					</main>
+				)
+			case 'list':
+				return (
+					<main>
+						<LaunchesList />
+					</main>
+				)
+			default:
+				return null;
+		}
+		}
+		
+		
+        
     }
 }
 
-export default hot(module)(App);
+export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(App))
